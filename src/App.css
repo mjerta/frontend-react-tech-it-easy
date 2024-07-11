@@ -1,0 +1,14 @@
+.tvsSold {
+  color: green;
+  font-size: 3rem;
+}
+
+.tvsPurchaded {
+  color: blue;
+  font-size: 3rem;
+}
+
+.tvtobesold {
+  color: red;
+  font-size: 3rem;
+}
