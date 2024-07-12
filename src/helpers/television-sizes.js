@@ -1,6 +1,6 @@
 import {bestSellingTv} from "../constants/inventory.js";
 
-function telivisionSizes() {
+function televisionSizes() {
   let string = "";
   const sizes = bestSellingTv.availableSizes;
   for (let i = 0; i < sizes.length; i++) {
@@ -12,4 +12,4 @@ function telivisionSizes() {
   return string;
 }
 
-export default telivisionSizes;
+export default televisionSizes;

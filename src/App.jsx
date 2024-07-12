@@ -1,10 +1,10 @@
 import './App.css';
-import {soldTelivision} from "./helpers/soldTelivision.js";
-import {totalPurchases} from "./helpers/totalPurchases.js";
-import {tvtobesold} from "./helpers/tvtobesold.js";
-import nameOfTelevision from "./helpers/nameOfTelivision.js";
-import priceoftelivision from "./helpers/priceoftelivision.js";
-import telivisionSizes from "./helpers/telivision-sizes.js";
+import soldTelevision from "./helpers/sold-television.js";
+import totalPurchases from "./helpers/total-purchases.js";
+import nameOfTelevision from "./helpers/name-of-telivision.js";
+import televisionSizes from "./helpers/television-sizes.js";
+import priceOfTelivision from "./helpers/price-of-telivision.js";
+import televisionsToBeSold from "./helpers/televisions-to-be-sold.js";
 import {bestSellingTv} from "./constants/inventory.js";
 import checkIcon from "./assets/check.png";
 import notIcon from "./assets/minus.png";
@@ -21,7 +21,7 @@ function App() {
               <div className="box-wrapper">
                 <div className="box tv-sold">
                   <p>Aantal verkochte producten</p>
-                  <p>{soldTelivision()}</p>
+                  <p>{soldTelevision()}</p>
                 </div>
                 <div className="box tv-purchased">
                   <p>Aantal ingekochte producten</p>
@@ -29,7 +29,7 @@ function App() {
                 </div>
                 <div className="box tv-to-be-sold">
                   <p>Aantal te verkopen producten</p>
-                  <p>{tvtobesold()}</p>
+                  <p>{televisionsToBeSold()}</p>
                 </div>
               </div>
             </section>
@@ -42,8 +42,8 @@ function App() {
                 </div>
                 <div className="right-col">
                   <h3>{nameOfTelevision()}</h3>
-                  <strong className="price">{priceoftelivision()}</strong>
-                  <p className="sizes">{telivisionSizes()}</p>
+                  <strong className="price">{priceOfTelivision()}</strong>
+                  <p className="sizes">{televisionSizes()}</p>
           <p>
             <img className="icons" src={checkIcon} alt="check-icon"/>
             wifi
