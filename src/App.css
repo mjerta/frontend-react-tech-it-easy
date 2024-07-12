@@ -2,21 +2,26 @@
 
 .tvsSold {
   color: green;
-  font-size: 3rem;
+  /*font-size: 3rem;*/
 }
 
 .tvsPurchaded {
   color: blue;
-  font-size: 3rem;
+  /*font-size: 3rem;*/
 }
 
 .tvtobesold {
   color: red;
-  font-size: 3rem;
+  /*font-size: 3rem;*/
 }
 
 .icons {
   height: 1rem;
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
+.icons:first-of-type {
+  margin-left: 0;
 }
 
 /* ==========================================================================
@@ -43,9 +48,11 @@ h1, h2, h3 {
 h1 {
   font-size: 3rem;
 }
+
 h2 {
   font-size: 2rem;
 }
+
 h3 {
   font-size: 1.5rem;
 }
@@ -54,16 +61,131 @@ h3 {
    Base Styles
    ========================================================================== */
 
+html {
+  font-size: 12px
+}
+
 #root {
   padding: 0 2rem;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
 /* ==========================================================================
    Layout Styles
    ========================================================================== */
 
-/* Styles for layout elements such as containers, grids, and flexboxes */
+.wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+}
+
+header {
+  & h1 {
+    font-weight: 500;
+    padding: 3rem 0;
+  }
+}
+
+main {
+  & section {
+    padding-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+
+    & h2 {
+      padding-bottom: 1.5rem;
+      font-weight: 400;
+    }
+  }
+}
+
+.box-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+
+.box {
+  flex: 1 1 20rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0 3rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  border: 3px solid;
+  max-width: 25rem;
+
+
+  & p {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+.tv-sold {
+  background-color: #ecf8f7;
+  border-color: #37a195;
+  color: #37a295
+}
+
+.tv-purchased {
+  background-color: #eff4f6;
+  border-color: #9fbdc9;
+  color: #6294a8;
+}
+
+.tv-to-be-sold {
+  background-color: #fbeeea;
+  border-color: #f1a696;
+  color: #e46344;
+}
+
+.card {
+  border: 1px dashed;
+  border-radius: 0.5rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #eaebea;
+  min-height: calc(281rem / 16);
+
+  & .left-col {
+    display: flex;
+    justify-content: center;
+
+  }
+
+  & .right-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+
+    & > * {
+      padding: .4rem 0;
+    }
+
+    & .price {
+      font-size: 1.5rem;
+    }
+  }
+  & .sizes {
+    font-weight: 600;
+  }
+}
+
+.featured-img {
+  width: 85%;
+  height: 85%;
+}
 
 
 /* ==========================================================================
@@ -95,3 +217,26 @@ h3 {
    ========================================================================== */
 
 /* Media queries for responsive design */
+
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 16px;
+  }
+
+  .card {
+    flex-direction: row;
+
+    & .left-col {
+      flex-basis: 20rem;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    & .right-col {
+      text-align: unset;
+      & > * {
+        padding: unset;
+      }
+    }
+  }
+}
