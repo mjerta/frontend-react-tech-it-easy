@@ -1,13 +1,17 @@
 import './App.css';
-import soldTelevision from "./helpers/sold-television.js";
+// Imported images
+import checkIcon from "./assets/check.png";
+import notIcon from "./assets/minus.png";
+// The 2 arrays needed to show the details of the inventory and the best sold tv.
+import {bestSellingTv, inventory} from "./constants/inventory.js";
+
+// All helper functions
+import soldTelevisions from "./helpers/sold-televisions.js";
 import totalPurchases from "./helpers/total-purchases.js";
 import nameOfTelevision from "./helpers/name-of-television.js";
 import televisionSizes from "./helpers/television-sizes.js";
-import priceOfTelivision from "./helpers/price-of-telivision.js";
+import priceOfTelevision from "./helpers/price-of-television.js";
 import televisionsToBeSold from "./helpers/televisions-to-be-sold.js";
-import {bestSellingTv} from "./constants/inventory.js";
-import checkIcon from "./assets/check.png";
-import notIcon from "./assets/minus.png";
 
 function App() {
   return (<>
@@ -21,15 +25,15 @@ function App() {
               <div className="box-wrapper">
                 <div className="box tv-sold">
                   <p>Aantal verkochte producten</p>
-                  <p>{soldTelevision()}</p>
+                  <p>{soldTelevisions(inventory)}</p>
                 </div>
                 <div className="box tv-purchased">
                   <p>Aantal ingekochte producten</p>
-                  <p>{totalPurchases()}</p>
+                  <p>{totalPurchases(inventory)}</p>
                 </div>
                 <div className="box tv-to-be-sold">
                   <p>Aantal te verkopen producten</p>
-                  <p>{televisionsToBeSold()}</p>
+                  <p>{televisionsToBeSold(totalPurchases(inventory), soldTelevisions(inventory))}</p>
                 </div>
               </div>
             </section>
@@ -41,9 +45,9 @@ function App() {
                        src={bestSellingTv.sourceImg}></img>
                 </div>
                 <div className="right-col">
-                  <h3>{nameOfTelevision()}</h3>
-                  <strong className="price">{priceOfTelivision()}</strong>
-                  <p className="sizes">{televisionSizes()}</p>
+                  <h3>{nameOfTelevision(bestSellingTv)}</h3>
+                  <strong className="price">{priceOfTelevision(bestSellingTv)}</strong>
+                  <p className="sizes">{televisionSizes(bestSellingTv)}</p>
           <p>
             <img className="icons" src={checkIcon} alt="check-icon"/>
             wifi

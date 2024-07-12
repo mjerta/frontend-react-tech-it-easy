@@ -1,6 +1,4 @@
-import {bestSellingTv} from "../constants/inventory.js";
-
-function televisionSizes() {
+function televisionSizes(bestSellingTv) {
   let string = "";
   const sizes = bestSellingTv.availableSizes;
   for (let i = 0; i < sizes.length; i++) {
