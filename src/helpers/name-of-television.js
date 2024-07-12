@@ -1,7 +1,7 @@
 import {bestSellingTv} from "../constants/inventory.js";
 
-function nameOfTelivision() {
+function nameOfTelevision() {
   return `${bestSellingTv.brand} ${bestSellingTv.type} - ${bestSellingTv.name}`;
 }
 
-export default nameOfTelivision;
+export default nameOfTelevision;

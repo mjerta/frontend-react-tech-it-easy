@@ -1,7 +1,7 @@
 import './App.css';
 import soldTelevision from "./helpers/sold-television.js";
 import totalPurchases from "./helpers/total-purchases.js";
-import nameOfTelevision from "./helpers/name-of-telivision.js";
+import nameOfTelevision from "./helpers/name-of-television.js";
 import televisionSizes from "./helpers/television-sizes.js";
 import priceOfTelivision from "./helpers/price-of-telivision.js";
 import televisionsToBeSold from "./helpers/televisions-to-be-sold.js";
