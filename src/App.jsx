@@ -14,6 +14,11 @@ import priceOfProduct from "./helpers/price-of-product.js";
 import productsToBeSold from "./helpers/products-to-be-sold.js";
 
 function App() {
+
+  function handleClick(e) {
+    console.log(e.target.textContent);
+  }
+
   return (<>
         <div className="wrapper">
           <header>
@@ -46,20 +51,32 @@ function App() {
                 </div>
                 <div className="right-col">
                   <h3>{nameOfProduct(bestSellingProduct)}</h3>
-                  <strong className="price">{priceOfProduct(bestSellingProduct)}</strong>
+                  <strong
+                      className="price">{priceOfProduct(bestSellingProduct)}</strong>
                   <p className="sizes">{televisionSizes(bestSellingProduct)}</p>
-          <p>
-            <img className="icons" src={checkIcon} alt="check-icon"/>
-            wifi
-            <img className="icons" src={notIcon} alt="not-icon"/>
-            speech
-            <img className="icons" src={checkIcon} alt="check-icon"/>
-            hdr
-            <img className="icons" src={checkIcon} alt="check-icon"/>
-            bluetooth
-            <img className="icons" src={notIcon} alt="not-icon"/>
-            ambilight</p>
+                  <p>
+                    <img className="icons" src={checkIcon} alt="check-icon"/>
+                    wifi
+                    <img className="icons" src={notIcon} alt="not-icon"/>
+                    speech
+                    <img className="icons" src={checkIcon} alt="check-icon"/>
+                    hdr
+                    <img className="icons" src={checkIcon} alt="check-icon"/>
+                    bluetooth
+                    <img className="icons" src={notIcon} alt="not-icon"/>
+                    ambilight</p>
                 </div>
+              </div>
+              <div className="filter-buttons">
+                <button className={"main-btn"} onClick={handleClick}>
+                  Meest verkocht eerst
+                </button>
+                <button className={"main-btn"} onClick={handleClick}>
+                  Goedkoopste eerst
+                </button>
+                <button className={"main-btn"} onClick={handleClick}>
+                  Meest geschikt voor sport eerst
+                </button>
               </div>
             </section>
           </main>

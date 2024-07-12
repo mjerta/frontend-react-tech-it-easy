@@ -187,6 +187,17 @@ main {
   height: 85%;
 }
 
+.filter-buttons {
+  padding: 1.5rem 0;
+  display: flex;
+  /*justify-content: center;*/
+  flex-wrap: wrap;
+  gap: 1.5rem;
+
+  & button {
+    flex-basis: 15rem;
+  }
+}
 
 /* ==========================================================================
    Navigation Styles
@@ -198,7 +209,9 @@ main {
    Button Styles
    ========================================================================== */
 
-/* Define styles for buttons */
+.main-btn {
+  padding: .6rem 1rem;
+}
 
 /* ==========================================================================
    Form Styles
