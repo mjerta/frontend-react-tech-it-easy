@@ -1,29 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-.tvsSold {
-  color: green;
-  /*font-size: 3rem;*/
-}
-
-.tvsPurchaded {
-  color: blue;
-  /*font-size: 3rem;*/
-}
-
-.tvtobesold {
-  color: red;
-  /*font-size: 3rem;*/
-}
-
-.icons {
-  height: 1rem;
-  margin-left: .5rem;
-  margin-right: .5rem;
-}
-.icons:first-of-type {
-  margin-left: 0;
-}
-
 /* ==========================================================================
    Reset Styles
    ========================================================================== */
@@ -177,6 +153,7 @@ main {
       font-size: 1.5rem;
     }
   }
+
   & .sizes {
     font-weight: 600;
   }
@@ -190,7 +167,6 @@ main {
 .filter-buttons {
   padding: 1.5rem 0;
   display: flex;
-  /*justify-content: center;*/
   flex-wrap: wrap;
   gap: 1.5rem;
 
@@ -203,7 +179,6 @@ main {
    Navigation Styles
    ========================================================================== */
 
-/* Styles for navigation elements such as navbars and menus */
 
 /* ==========================================================================
    Button Styles
@@ -217,13 +192,19 @@ main {
    Form Styles
    ========================================================================== */
 
-/* Styles for form elements such as inputs, labels, and buttons */
 
 /* ==========================================================================
    Utility Classes
    ========================================================================== */
+.icons {
+  height: 1rem;
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
 
-/* Define reusable utility classes */
+.icons:first-of-type {
+  margin-left: 0;
+}
 
 /* ==========================================================================
    Media Queries
@@ -247,6 +228,7 @@ main {
 
     & .right-col {
       text-align: unset;
+
       & > * {
         padding: unset;
       }
