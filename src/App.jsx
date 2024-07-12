@@ -3,15 +3,15 @@ import './App.css';
 import checkIcon from "./assets/check.png";
 import notIcon from "./assets/minus.png";
 // The 2 arrays needed to show the details of the inventory and the best sold tv.
-import {bestSellingTv, inventory} from "./constants/inventory.js";
+import {bestSellingProduct, inventory} from "./constants/inventory.js";
 
 // All helper functions
-import soldTelevisions from "./helpers/sold-televisions.js";
+import soldProducts from "./helpers/sold-products.js";
 import totalPurchases from "./helpers/total-purchases.js";
-import nameOfTelevision from "./helpers/name-of-television.js";
+import nameOfProduct from "./helpers/name-of-product.js";
 import televisionSizes from "./helpers/television-sizes.js";
-import priceOfTelevision from "./helpers/price-of-television.js";
-import televisionsToBeSold from "./helpers/televisions-to-be-sold.js";
+import priceOfProduct from "./helpers/price-of-product.js";
+import productsToBeSold from "./helpers/products-to-be-sold.js";
 
 function App() {
   return (<>
@@ -25,7 +25,7 @@ function App() {
               <div className="box-wrapper">
                 <div className="box tv-sold">
                   <p>Aantal verkochte producten</p>
-                  <p>{soldTelevisions(inventory)}</p>
+                  <p>{soldProducts(inventory)}</p>
                 </div>
                 <div className="box tv-purchased">
                   <p>Aantal ingekochte producten</p>
@@ -33,7 +33,7 @@ function App() {
                 </div>
                 <div className="box tv-to-be-sold">
                   <p>Aantal te verkopen producten</p>
-                  <p>{televisionsToBeSold(totalPurchases(inventory), soldTelevisions(inventory))}</p>
+                  <p>{productsToBeSold(totalPurchases(inventory), soldProducts(inventory))}</p>
                 </div>
               </div>
             </section>
@@ -42,12 +42,12 @@ function App() {
               <div className="card">
                 <div className="left-col">
                   <img className="featured-img"
-                       src={bestSellingTv.sourceImg}></img>
+                       src={bestSellingProduct.sourceImg}></img>
                 </div>
                 <div className="right-col">
-                  <h3>{nameOfTelevision(bestSellingTv)}</h3>
-                  <strong className="price">{priceOfTelevision(bestSellingTv)}</strong>
-                  <p className="sizes">{televisionSizes(bestSellingTv)}</p>
+                  <h3>{nameOfProduct(bestSellingProduct)}</h3>
+                  <strong className="price">{priceOfProduct(bestSellingProduct)}</strong>
+                  <p className="sizes">{televisionSizes(bestSellingProduct)}</p>
           <p>
             <img className="icons" src={checkIcon} alt="check-icon"/>
             wifi
