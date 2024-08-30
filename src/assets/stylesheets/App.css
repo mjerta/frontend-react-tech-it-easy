@@ -168,10 +168,10 @@ main {
   display: flex;
   /* When wrap not applied, it is causing the elements to exceed out of the parents border, causing parent  elements to grow what is not suitable*/
   overflow: hidden;
-  justify-content: center;
+  /* I will use margin 0 auto instead of justify-content, I dont like the next line not in the same position as the previous*/
+  /* I could have used another parent div but this seems easier*/
+  margin: 0 auto;
   flex-wrap: wrap;
-
-
 }
 
 .featured-img {
@@ -252,5 +252,9 @@ main {
         padding: unset;
       }
     }
+  }
+
+  .card-options {
+    margin: unset;
   }
 }
