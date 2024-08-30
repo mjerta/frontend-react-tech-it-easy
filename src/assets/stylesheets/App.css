@@ -159,6 +159,10 @@ main {
   }
 }
 
+.option-holder {
+  margin-right: .3rem;
+}
+
 .featured-img {
   width: 85%;
   height: 85%;

@@ -1,9 +1,13 @@
-import './App.css';
+import { useState } from 'react';
+import './assets/stylesheets/App.css';
 // Imported images
 import checkIcon from "./assets/check.png";
 import notIcon from "./assets/minus.png";
 // The 2 arrays needed to show the details of the inventory and the best sold tv.
-import {bestSellingProduct, inventory} from "./constants/inventory.js";
+import {
+  bestSellingProduct,
+  inventory
+} from "./constants/inventory.js";
 
 // All helper functions
 import soldProducts from "./helpers/sold-products.js";
@@ -13,10 +17,64 @@ import televisionSizes from "./helpers/television-sizes.js";
 import priceOfProduct from "./helpers/price-of-product.js";
 import productsToBeSold from "./helpers/products-to-be-sold.js";
 
+const sortOnSoldAmmount = "sort-on-sold-ammount";
+const sortOnPrice = "sort-on-price";
+const sortOnRefreshRate = "sort-on-refresh-rate";
+const sortOnTVSize = "sort-on-tv-size";
+
 function App() {
+  const [sortedInventory, setSortedInventory] = useState(inventory);
+
+  const tvBrands = inventory.map((tvBrand) => {
+    return tvBrand.brand;
+  })
+
+  console.log(tvBrands);
 
   function handleClick(e) {
+    let sortedItems;
     console.log(e.target.textContent);
+    console.log(e.target);
+
+    if (e.target.name ===  sortOnSoldAmmount) {
+      inventory.sort((a, b) => a.sold - b.sold);
+      const sortedOnSoldItems = inventory.map((item) => {
+            return item.sold + " item sold";
+          }
+      )
+      console.log(inventory)
+      console.log(sortedOnSoldItems);
+    }
+
+    if (e.target.name === sortOnPrice) {
+      inventory.sort((a, b) => a.price - b.price);
+      const sortedOPriceItems = inventory.map((item) => {
+        return item.price + ",-";
+      })
+      console.log(inventory)
+      console.log(sortedOPriceItems);
+    }
+
+    if (e.target.name === sortOnRefreshRate) {
+      inventory.sort((a, b) => a.refreshRate - b.refreshRate);
+      const sortedOnRefreshRateItems = inventory.map((item) => {
+        return item.refreshRate + "Hz";
+      })
+      console.log(inventory);
+      console.log(sortedOnRefreshRateItems);
+    }
+
+    if (e.target.name === sortOnTVSize) {
+      sortedItems = [...inventory].sort((a, b) => Math.max(...b.availableSizes) - Math.max(... a.availableSizes));
+      inventory.sort((a, b) => Math.max(...b.availableSizes) - Math.max(... a.availableSizes));
+
+      const sortedOnTVSizeItems = inventory.map((item) => {
+        return Math.max(...item.availableSizes) + " inch";
+      })
+      setSortedInventory(sortedItems);
+      console.log(inventory);
+      console.log(sortedOnTVSizeItems);
+    }
   }
 
   return (<>
@@ -55,30 +113,87 @@ function App() {
                       className="price">{priceOfProduct(bestSellingProduct)}</strong>
                   <p className="sizes">{televisionSizes(bestSellingProduct)}</p>
                   <p>
-                    <img className="icons" src={checkIcon} alt="check-icon"/>
-                    wifi
-                    <img className="icons" src={notIcon} alt="not-icon"/>
-                    speech
-                    <img className="icons" src={checkIcon} alt="check-icon"/>
-                    hdr
-                    <img className="icons" src={checkIcon} alt="check-icon"/>
-                    bluetooth
-                    <img className="icons" src={notIcon} alt="not-icon"/>
-                    ambilight</p>
+                    {bestSellingProduct.options.map((option) => {
+                      if (option.applicable) {
+                        return (
+                            <span className="option-holder" key={option.name}>
+                                <img className="icons"
+                                     src={checkIcon}
+                                     alt="not-icon"/>
+                              {option.name}
+                              </span>)
+                      } else {
+                        return (
+                            <span className="option-holder" key={option.name}>
+                                <img className="icons"
+                                     src={notIcon}
+                                     alt="not-icon"/>
+                              {option.name}
+                              </span>)
+                      }
+                    })}
+                  </p>
                 </div>
               </div>
               <div className="filter-buttons">
-                <button className={"main-btn"} onClick={handleClick}>
+                <button name={sortOnSoldAmmount} className={"main-btn"}
+                        onClick={handleClick}>
                   Meest verkocht eerst
                 </button>
-                <button className={"main-btn"} onClick={handleClick}>
+                <button name={sortOnPrice} className={"main-btn"}
+                        onClick={handleClick}>
                   Goedkoopste eerst
                 </button>
-                <button className={"main-btn"} onClick={handleClick}>
+                <button name={sortOnRefreshRate} className={"main-btn"}
+                        onClick={handleClick}>
                   Meest geschikt voor sport eerst
+                </button>
+                <button name={sortOnTVSize} className={"main-btn"}
+                        onClick={handleClick}>
+                  Grootste schermgroottes eerst
                 </button>
               </div>
             </section>
+            {sortedInventory.map((tv) => {
+                  return (<section key={tv.type} className="telivision-display">
+                    {/*<h2>Best verkochte tv</h2>*/}
+                    <div className="card">
+                      <div className="left-col">
+                        <img className="featured-img"
+                             src={tv.sourceImg}></img>
+                      </div>
+                      <div className="right-col">
+                        <h3>{nameOfProduct(tv)}</h3>
+                        <strong
+                            className="price">{priceOfProduct(tv)}</strong>
+                        <p className="sizes">{televisionSizes(tv)}</p>
+                        <p>
+                          {tv.options.map((option) => {
+                            if (option.applicable) {
+                              return (
+                                  <span className="option-holder" key={option.name}>
+                                <img className="icons"
+                                     src={checkIcon}
+                                     alt="not-icon"/>
+                                    {option.name}
+                              </span>)
+                            } else {
+                              return (
+                                  <span className="option-holder" key={option.name}>
+                                <img className="icons"
+                                     src={notIcon}
+                                     alt="not-icon"/>
+                                    {option.name}
+                              </span>)
+                            }
+                          })}
+                        </p>
+                      </div>
+                    </div>
+                  </section>)
+                }
+            )
+            }
           </main>
         </div>
       </>
