@@ -184,7 +184,7 @@ function App() {
                 <strong
                 className="price">{priceOfProduct(tv)}</strong>
                 <p className="sizes">{televisionSizes(tv)}</p>
-                <p>
+                <p className="card-options">
                   {/* When you use parentheses after an arrow function,  it implies an implicit return.*/}
                   {/* If you want to use the curly brackets you need to add the return before the ternary condition*/}
                   {tv.options.map((option) => (

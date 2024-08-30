@@ -56,7 +56,7 @@ html {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
+  max-width: 100%;
 }
 
 header {
@@ -161,6 +161,17 @@ main {
 
 .option-holder {
   margin-right: .3rem;
+
+}
+
+.card-options {
+  display: flex;
+  /* When wrap not applied, it is causing the elements to exceed out of the parents border, causing parent  elements to grow what is not suitable*/
+  overflow: hidden;
+  justify-content: center;
+  flex-wrap: wrap;
+
+
 }
 
 .featured-img {
@@ -219,6 +230,10 @@ main {
 @media screen and (min-width: 800px) {
   html {
     font-size: 16px;
+  }
+
+  .wrapper {
+    max-width: 1200px;
   }
 
   .card {
