@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import './assets/stylesheets/App.css';
 // Imported images
 import checkIcon from "./assets/check.png";
 import notIcon from "./assets/minus.png";
+import soldOutImage from "./assets/out-of-stock.png";
 // The 2 arrays needed to show the details of the inventory and the best sold tv.
 import {
   bestSellingProduct,
@@ -36,7 +37,7 @@ function App() {
     console.log(e.target.textContent);
     console.log(e.target);
 
-    if (e.target.name ===  sortOnSoldAmmount) {
+    if (e.target.name === sortOnSoldAmmount) {
       inventory.sort((a, b) => a.sold - b.sold);
       const sortedOnSoldItems = inventory.map((item) => {
             return item.sold + " item sold";
@@ -65,8 +66,8 @@ function App() {
     }
 
     if (e.target.name === sortOnTVSize) {
-      sortedItems = [...inventory].sort((a, b) => Math.max(...b.availableSizes) - Math.max(... a.availableSizes));
-      inventory.sort((a, b) => Math.max(...b.availableSizes) - Math.max(... a.availableSizes));
+      sortedItems = [...inventory].sort((a, b) => Math.max(...b.availableSizes) - Math.max(...a.availableSizes));
+      // inventory.sort((a, b) => Math.max(...b.availableSizes) - Math.max(... a.availableSizes));
 
       const sortedOnTVSizeItems = inventory.map((item) => {
         return Math.max(...item.availableSizes) + " inch";
@@ -78,6 +79,7 @@ function App() {
   }
 
   return (<>
+        {console.log(sortedInventory)}
         <div className="wrapper">
           <header>
             <h1>Tech it easy dashboard</h1>
@@ -160,7 +162,13 @@ function App() {
                     <div className="card">
                       <div className="left-col">
                         <img className="featured-img"
-                             src={tv.sourceImg}></img>
+                             src={tv.originalStock === tv.sold ?
+
+                                 soldOutImage
+                                 :
+                                 tv.sourceImg
+                             }>
+                        </img>
                       </div>
                       <div className="right-col">
                         <h3>{nameOfProduct(tv)}</h3>
