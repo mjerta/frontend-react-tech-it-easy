@@ -131,7 +131,6 @@ main {
   display: flex;
   flex-direction: column;
   background-color: #eaebea;
-  min-height: calc(281rem / 16);
 
   & .left-col {
     display: flex;
@@ -175,8 +174,9 @@ main {
 }
 
 .featured-img {
-  width: 85%;
-  height: 85%;
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
 }
 
 .filter-buttons {
@@ -238,6 +238,7 @@ main {
 
   .card {
     flex-direction: row;
+    height: calc(281rem / 16);
 
     & .left-col {
       flex-basis: 20rem;
