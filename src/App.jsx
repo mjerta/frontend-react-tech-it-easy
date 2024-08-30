@@ -17,6 +17,7 @@ import nameOfProduct from "./helpers/name-of-product.js";
 import televisionSizes from "./helpers/television-sizes.js";
 import priceOfProduct from "./helpers/price-of-product.js";
 import productsToBeSold from "./helpers/products-to-be-sold.js";
+import productOutOfStock from "./helpers/product-out-of-stock.js";
 
 const sortOnSoldAmmount = "sort-on-sold-ammount";
 const sortOnPrice = "sort-on-price";
@@ -171,7 +172,7 @@ function App() {
                 {/* The ternary operator is an expression that directly returns a value, makint it suitable for JSC attributes*/}
                 <img alt={featuredImaged} className="featured-img"
                      src={
-                       tv.originalStock === tv.sold ?
+                       productOutOfStock(tv) ?
                        soldOutImage
                        :
                        tv.sourceImg
@@ -214,7 +215,6 @@ function App() {
       </main>
     </div>
   </>
-
   )
 }
 
