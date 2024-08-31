@@ -9,8 +9,8 @@ import {
   bestSellingProduct,
   inventory
 } from "./constants/inventory.js";
-// This gives an object of the button names
-import {buttonNames, test} from "./constants/buttonNames.js";
+// This gives an object of the button names and sorting expressions I want to use later when they are called
+import { sortImplements} from "./constants/buttonNames.js";
 // All helper functions
 import soldProducts from "./helpers/sold-products.js";
 import totalPurchases from "./helpers/total-purchases.js";
@@ -19,7 +19,6 @@ import televisionSizes from "./helpers/television-sizes.js";
 import priceOfProduct from "./helpers/price-of-product.js";
 import productsToBeSold from "./helpers/products-to-be-sold.js";
 import productOutOfStock from "./helpers/product-out-of-stock.js";
-import sortProducts from "./helpers/sort-products.js";
 
 const featuredImaged = "Featured image";
 
@@ -30,12 +29,13 @@ function App() {
   })
   console.log(tvBrands);
 
-  for (const key in test) {
-    console.log(test[key].name)
+  for (const key in sortImplements) {
+    console.log(sortImplements[key].name)
   }
 
   function handleClick(e) {
-    return sortProducts(e.target.name, inventory, buttonNames)
+    const sortkey = e.target.name;
+    return  [...inventory].sort(sortImplements[sortkey].sortFunction);
   }
 
   function setSetter(arr) {
@@ -107,7 +107,7 @@ function App() {
             {/* Started to experiment just a bit to see how far I can co with refactoring. I put the btn name and the text thats needed in a single object that contains 4 objects of the 4 buttons*/}
             {/* This way i could iterate over it and even use it in many places*/}
             {/* However I also realize I could kept it a bit more simple as well.*/}
-            {Object.entries(test).map(([key, value]) => (
+            {Object.entries(sortImplements).map(([key, value]) => (
             <button
             key={key}
             name={key}
