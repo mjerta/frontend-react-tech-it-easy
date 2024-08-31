@@ -9,7 +9,8 @@ import {
   bestSellingProduct,
   inventory
 } from "./constants/inventory.js";
-
+// This gives an object of the button names
+import {buttonNames, test} from "./constants/buttonNames.js";
 // All helper functions
 import soldProducts from "./helpers/sold-products.js";
 import totalPurchases from "./helpers/total-purchases.js";
@@ -18,71 +19,31 @@ import televisionSizes from "./helpers/television-sizes.js";
 import priceOfProduct from "./helpers/price-of-product.js";
 import productsToBeSold from "./helpers/products-to-be-sold.js";
 import productOutOfStock from "./helpers/product-out-of-stock.js";
-
-const sortOnSoldAmmount = "sort-on-sold-ammount";
-const sortOnPrice = "sort-on-price";
-const sortOnRefreshRate = "sort-on-refresh-rate";
-const sortOnTVSize = "sort-on-tv-size";
+import sortProducts from "./helpers/sort-products.js";
 
 const featuredImaged = "Featured image";
 
 function App() {
   const [sortedInventory, setSortedInventory] = useState(inventory);
-
   const tvBrands = inventory.map((tvBrand) => {
     return tvBrand.brand;
   })
-
   console.log(tvBrands);
 
+  for (const key in test) {
+    console.log(test[key].name)
+  }
+
   function handleClick(e) {
-    let sortedItems;
-    console.log(e.target.textContent);
-    console.log(e.target);
+    return sortProducts(e.target.name, inventory, buttonNames)
+  }
 
-    if (e.target.name === sortOnSoldAmmount) {
-      inventory.sort((a, b) => a.sold - b.sold);
-      const sortedOnSoldItems = inventory.map((item) => {
-        return item.sold + " item sold";
-      }
-      )
-      console.log(inventory)
-      console.log(sortedOnSoldItems);
-    }
-
-    if (e.target.name === sortOnPrice) {
-      inventory.sort((a, b) => a.price - b.price);
-      const sortedOPriceItems = inventory.map((item) => {
-        return item.price + ",-";
-      })
-      console.log(inventory)
-      console.log(sortedOPriceItems);
-    }
-
-    if (e.target.name === sortOnRefreshRate) {
-      inventory.sort((a, b) => a.refreshRate - b.refreshRate);
-      const sortedOnRefreshRateItems = inventory.map((item) => {
-        return item.refreshRate + "Hz";
-      })
-      console.log(inventory);
-      console.log(sortedOnRefreshRateItems);
-    }
-
-    if (e.target.name === sortOnTVSize) {
-      sortedItems = [...inventory].sort((a, b) => Math.max(...b.availableSizes) - Math.max(...a.availableSizes));
-      // inventory.sort((a, b) => Math.max(...b.availableSizes) - Math.max(... a.availableSizes));
-
-      const sortedOnTVSizeItems = inventory.map((item) => {
-        return Math.max(...item.availableSizes) + " inch";
-      })
-      setSortedInventory(sortedItems);
-      console.log(inventory);
-      console.log(sortedOnTVSizeItems);
-    }
+  function setSetter(arr) {
+    setSortedInventory(arr);
   }
 
   return (<>
-    {console.log(sortedInventory)}
+    {/*{console.log(sortedInventory)}*/}
     <div className="wrapper">
       <header>
         <h1>Tech it easy dashboard</h1>
@@ -143,22 +104,19 @@ function App() {
             </div>
           </div>
           <div className="filter-buttons">
-            <button name={sortOnSoldAmmount} className={"main-btn"}
-                    onClick={handleClick}>
-              Meest verkocht eerst
+            {/* Started to experiment just a bit to see how far I can co with refactoring. I put the btn name and the text thats needed in a single object that contains 4 objects of the 4 buttons*/}
+            {/* This way i could iterate over it and even use it in many places*/}
+            {/* However I also realize I could kept it a bit more simple as well.*/}
+            {Object.entries(test).map(([key, value]) => (
+            <button
+            key={key}
+            name={key}
+            className="main-btn"
+            onClick={(e) => setSetter(handleClick(e))}
+            >
+              {value.text}
             </button>
-            <button name={sortOnPrice} className={"main-btn"}
-                    onClick={handleClick}>
-              Goedkoopste eerst
-            </button>
-            <button name={sortOnRefreshRate} className={"main-btn"}
-                    onClick={handleClick}>
-              Meest geschikt voor sport eerst
-            </button>
-            <button name={sortOnTVSize} className={"main-btn"}
-                    onClick={handleClick}>
-              Grootste schermgroottes eerst
-            </button>
+            ))}
           </div>
         </section>
         {/* Because of the syntax of JSX I could also use the ( instead of the arrow function to implicit say you are returning the value.*/}
