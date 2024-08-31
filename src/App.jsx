@@ -74,7 +74,7 @@ function App() {
                 <strong
                   className="price">{priceOfProduct(bestSellingProduct)}</strong>
                 <p className="sizes">{televisionSizes(bestSellingProduct)}</p>
-                <p>
+                <p className="card-options">
                   {/* Here I am just showing an old way of how would approach this*/}
                   {/* I Kept it in here for example purposes*/}
                   {bestSellingProduct.options.map((option) => {
