@@ -130,7 +130,7 @@ main {
   padding: 3rem;
   display: flex;
   flex-direction: column;
-  background-color: #eaebea;
+  background-color: hsl(120, 2%, 82%);
 
   & .left-col {
     display: flex;

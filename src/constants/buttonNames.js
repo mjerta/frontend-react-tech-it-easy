@@ -7,7 +7,7 @@ export const sortImplements = {
   sortOnPrice: {
     name: "sort-on-price",
     text: "Goedkoopste eerst",
-    sortFunction: (a, b) => b.price - a.price
+    sortFunction: (a, b) => a.price - b.price
   },
   sortOnRefreshRate: {
     name: "sort-on-refresh-rate",
