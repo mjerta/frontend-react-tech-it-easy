@@ -10,7 +10,7 @@ import {
   inventory
 } from "./constants/inventory.js";
 // This gives an object of the button names and sorting expressions I want to use later when they are called
-import {sortImplements} from "./constants/buttonNames.js";
+import {sortImplements} from "./constants/sort-implements.js";
 // All helper functions
 import soldProducts from "./helpers/sold-products.js";
 import totalPurchases from "./helpers/total-purchases.js";

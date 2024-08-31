@@ -182,11 +182,23 @@ main {
 .filter-buttons {
   padding: 1.5rem 0;
   display: flex;
+  /*justify-content: center;*/
   flex-wrap: wrap;
   gap: 1.5rem;
 
   & button {
     flex-basis: 15rem;
+    background-color: #4d8a87;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    color: white;
+    font-size: .7rem;
+  }
+
+  & button:hover {
+    background-color: hsl(177, 28%, 22%);
   }
 }
 

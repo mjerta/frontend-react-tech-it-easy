@@ -12,7 +12,7 @@ export const sortImplements = {
   sortOnRefreshRate: {
     name: "sort-on-refresh-rate",
     text: "Meest geschikt voor sport eerst",
-    sortFunction: (a, b) => a.refreshRate - b.refreshRate
+    sortFunction: (a, b) => b.refreshRate - a.refreshRate
   },
   sortOnTVSize:  {
     name: "sort-on-tv-size",
