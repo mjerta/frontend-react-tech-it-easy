@@ -4,6 +4,12 @@ import './assets/stylesheets/App.css';
 import checkIcon from "./assets/check.png";
 import notIcon from "./assets/minus.png";
 import soldOutImage from "./assets/out-of-stock.png";
+
+// This import is excluise for an assignment and will be only used for sone console logs
+import {
+  getAllSoldOutTv,
+  getAllTvTypes, getSpecificitem
+} from "./helpers/demostration-of-arrays.js";
 // The 2 arrays needed to show the details of the inventory and the best sold tv.
 import {
   bestSellingProduct,
@@ -23,15 +29,18 @@ import productOutOfStock from "./helpers/product-out-of-stock.js";
 const featuredImaged = "Featured image";
 
 function App() {
+  console.log(getAllTvTypes(inventory));
+  console.log(getAllSoldOutTv(inventory, productOutOfStock));
+  console.log(getSpecificitem(inventory,"NH3216SMART"));
+
   const [sortedInventory, setSortedInventory] = useState(inventory);
-  const tvBrands = inventory.map((tvBrand) => {
-    return tvBrand.brand;
-  })
-  console.log(tvBrands);
 
   function handleClick(e) {
     const sortkey = e.target.name;
-    return [...inventory].sort(sortImplements[sortkey].sortFunction);
+    const result = [...inventory].sort(sortImplements[sortkey].sortFunction)
+    // For example purposes
+    console.log(result)
+    return result
   }
 
   function setSetter(arr) {
