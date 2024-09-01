@@ -8,7 +8,11 @@ import soldOutImage from "./assets/out-of-stock.png";
 // This import is excluise for an assignment and will be only used for sone console logs
 import {
   getAllSoldOutTv,
-  getAllTvTypes, getSpecificitem
+  getAllTvTypes,
+  getListSuitableForSport,
+  getSpecificitem,
+  getTelevionsAboveSize,
+  getTelivisionsWithAmbiLight
 } from "./helpers/demostration-of-arrays.js";
 // The 2 arrays needed to show the details of the inventory and the best sold tv.
 import {
@@ -28,10 +32,15 @@ import productOutOfStock from "./helpers/product-out-of-stock.js";
 
 const featuredImaged = "Featured image";
 
+console.log("/////////////// Examples assignment1 ///////////////\n")
 function App() {
   console.log(getAllTvTypes(inventory));
   console.log(getAllSoldOutTv(inventory, productOutOfStock));
-  console.log(getSpecificitem(inventory,"NH3216SMART"));
+  console.log(getSpecificitem(inventory, "NH3216SMART"));
+  console.log(getListSuitableForSport(inventory));
+  console.log(getTelevionsAboveSize(inventory, 65));
+  console.log(getTelivisionsWithAmbiLight(inventory));
+  console.log("/////////////// End of examples assignment1 ///////////////\n\n")
 
   const [sortedInventory, setSortedInventory] = useState(inventory);
 
@@ -39,7 +48,9 @@ function App() {
     const sortkey = e.target.name;
     const result = [...inventory].sort(sortImplements[sortkey].sortFunction)
     // For example purposes
+    console.log(`/////////////// Sorted result of ${sortkey} ///////////////\n`);
     console.log(result)
+    console.log(`/////////////// End of sorted result of ${sortkey} ///////////////\n\n`);
     return result
   }
 
