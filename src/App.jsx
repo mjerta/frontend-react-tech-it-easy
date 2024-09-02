@@ -30,9 +30,13 @@ import priceOfProduct from "./helpers/price-of-product.js";
 import productsToBeSold from "./helpers/products-to-be-sold.js";
 import productOutOfStock from "./helpers/product-out-of-stock.js";
 
+// Components
+import Button from "./components/button.jsx";
+
 const featuredImaged = "Featured image";
 
 console.log("/////////////// Examples assignment1 ///////////////\n")
+
 function App() {
   console.log(getAllTvTypes(inventory));
   console.log(getAllSoldOutTv(inventory, productOutOfStock));
@@ -124,11 +128,14 @@ function App() {
               {/* This way i could iterate over it and even use it in many places*/}
               {/* However I also realize I could kept it a bit more simple as well.*/}
               {/* You will see for the whole sorting I tried to get out the most out of the reuasables in the sortImplements object*/}
+              {/* I also made a component out of this button*/}
               {Object.entries(sortImplements).map(([key, value]) => (
-                <button key={key} name={key} className="main-btn"
-                        onClick={(e) => setSetter(handleClick(e))}>
-                  {value.text}
-                </button>
+                <Button
+                  key={key}
+                  name={key}
+                  onClick={(e) => setSetter(handleClick(e))}
+                  buttonText={value.text}
+                />
               ))}
             </div>
           </section>
