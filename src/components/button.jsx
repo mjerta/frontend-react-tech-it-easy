@@ -1,12 +1,12 @@
 // import React from "react";
 import PropTypes from "prop-types";
 
-function Button({name, onClick, buttonText}) {
+function Button({name, onClick: test, buttonText}) {
   return (
     <button
       name={name}
       className="main-btn"
-      onClick={onClick}
+      onClick={test}
     >
       {buttonText}
     </button>

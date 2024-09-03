@@ -32,6 +32,8 @@ import productOutOfStock from "./helpers/product-out-of-stock.js";
 
 // Components
 import Button from "./components/button.jsx";
+import Header from "./components/header.jsx";
+import Box from "./components/box.jsx";
 
 const featuredImaged = "Featured image";
 
@@ -65,21 +67,26 @@ function App() {
   return (
     <>
       <div className="wrapper">
-        <header>
+        <Header>
           <h1>Tech it easy dashboard</h1>
-        </header>
+        </Header>
+        {/*<header>*/}
+        {/*  <h1>Tech it easy dashboard</h1>*/}
+        {/*</header>*/}
         <main>
           <section className="sales-overview">
             <h2>Verkoopoverzicht</h2>
             <div className="box-wrapper">
-              <div className="box tv-sold">
-                <p>Aantal verkochte producten</p>
-                <p>{soldProducts(inventory)}</p>
-              </div>
-              <div className="box tv-purchased">
-                <p>Aantal ingekochte producten</p>
-                <p>{totalPurchases(inventory)}</p>
-              </div>
+              <Box
+                title="Aantal verkochte producten"
+                value={soldProducts(inventory)}
+                className="tv-sold"
+              />
+              <Box
+                title="Aantal ingekochte producten"
+                value={totalPurchases(inventory)}
+                className="tv-purchased"
+              />
               <div className="box tv-to-be-sold">
                 <p>Aantal te verkopen producten</p>
                 <p>{productsToBeSold(totalPurchases(inventory), soldProducts(inventory))}</p>
@@ -137,6 +144,7 @@ function App() {
                   buttonText={value.text}
                 />
               ))}
+              <Button buttonText={"hi"} onClick={() => console.log("hi")} name={"testButton"} />
             </div>
           </section>
           {/* Because of the syntax of JSX I could also use the ( instead of the arrow function to implicit say you are returning the value.*/}
