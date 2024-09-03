@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 
-
 function Box({title, value, className}) {
   return (
     <div className={`box ${className}`}>

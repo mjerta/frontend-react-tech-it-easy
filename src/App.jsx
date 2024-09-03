@@ -21,6 +21,7 @@ import {
 } from "./constants/inventory.js";
 // This gives an object of the button names and sorting expressions I want to use later when they are called
 import {sortImplements} from "./constants/sort-implements.js";
+import {testObject} from "./constants/test-object.js";
 // All helper functions
 import soldProducts from "./helpers/sold-products.js";
 import totalPurchases from "./helpers/total-purchases.js";
@@ -34,6 +35,7 @@ import productOutOfStock from "./helpers/product-out-of-stock.js";
 import Button from "./components/button.jsx";
 import Header from "./components/header.jsx";
 import Box from "./components/box.jsx";
+import TestComponent from "./components/test-component.jsx"
 
 const featuredImaged = "Featured image";
 
@@ -69,7 +71,11 @@ function App() {
       <div className="wrapper">
         <Header>
           <h1>Tech it easy dashboard</h1>
-        </Header>
+        </Header
+        >
+        <TestComponent
+          object={testObject}
+        />
         {/*<header>*/}
         {/*  <h1>Tech it easy dashboard</h1>*/}
         {/*</header>*/}
@@ -144,7 +150,8 @@ function App() {
                   buttonText={value.text}
                 />
               ))}
-              <Button buttonText={"hi"} onClick={() => console.log("hi")} name={"testButton"} />
+              <Button buttonText={"hi"} onClick={() => console.log("hi")}
+                      name={"testButton"}/>
             </div>
           </section>
           {/* Because of the syntax of JSX I could also use the ( instead of the arrow function to implicit say you are returning the value.*/}
