@@ -1,5 +1,5 @@
 export const testObject = {
-  name: "test",
+  name: "first layer",
   nextLayer : {
     name: "second layer"
   }

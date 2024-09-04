@@ -35,9 +35,10 @@ import productOutOfStock from "./helpers/product-out-of-stock.js";
 import Button from "./components/button.jsx";
 import Header from "./components/header.jsx";
 import Box from "./components/box.jsx";
-import TestComponent from "./components/test-component.jsx"
+import TestComponent from "./components/test-component.jsx";
+import Card from "./components/card.jsx";
 
-const featuredImaged = "Featured image";
+const featuredImage = "Featured image";
 
 console.log("/////////////// Examples assignment1 ///////////////\n")
 
@@ -93,17 +94,29 @@ function App() {
                 value={totalPurchases(inventory)}
                 className="tv-purchased"
               />
-              <div className="box tv-to-be-sold">
-                <p>Aantal te verkopen producten</p>
-                <p>{productsToBeSold(totalPurchases(inventory), soldProducts(inventory))}</p>
-              </div>
+              <Box
+                title="Aantal te verkopen producten"
+                value={productsToBeSold(totalPurchases(inventory), soldProducts(inventory))}
+                className="box tv-to-be-sold"
+              />
             </div>
           </section>
           <section className="featured-display">
             <h2>Best verkochte tv</h2>
+            <Card
+              product={bestSellingProduct}
+              checkIcon={checkIcon}
+              notIcon={notIcon}
+              featuredImage={featuredImage}
+              nameOfProduct={nameOfProduct}
+              priceOfProduct={priceOfProduct}
+              televisionSizes={televisionSizes}
+            />
+
+
             <div className="card">
               <div className="left-col">
-                <img alt={featuredImaged} className="featured-img"
+                <img alt={featuredImage} className="featured-img"
                      src={bestSellingProduct.sourceImg}></img>
               </div>
               <div className="right-col">
@@ -150,8 +163,6 @@ function App() {
                   buttonText={value.text}
                 />
               ))}
-              <Button buttonText={"hi"} onClick={() => console.log("hi")}
-                      name={"testButton"}/>
             </div>
           </section>
           {/* Because of the syntax of JSX I could also use the ( instead of the arrow function to implicit say you are returning the value.*/}
@@ -162,7 +173,7 @@ function App() {
                   <div className="left-col">
                     {/* The reason you cant use an if inside an attribute like src or a return value  is that JSC attributes expect a single expression that  evaluates to a value.*/}
                     {/* The ternary operator is an expression that directly returns a value, makint it suitable for JSC attributes*/}
-                    <img alt={featuredImaged} className="featured-img"
+                    <img alt={featuredImage} className="featured-img"
                          src={
                            productOutOfStock(tv) ?
                              soldOutImage

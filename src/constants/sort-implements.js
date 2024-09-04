@@ -18,10 +18,5 @@ export const sortImplements = {
     name: "sort-on-tv-size",
     text: "Grootste schermgroottes eerst",
     sortFunction: (a, b) => Math.max(...b.availableSizes) - Math.max(...a.availableSizes)
-  },
-  sortOnTv:  {
-    name: "sort-on-tv-size",
-    text: "Grootste schermgroottes eerst",
-    sortFunction: (a, b) => Math.max(...b.availableSizes) - Math.max(...a.availableSizes)
   }
 }
