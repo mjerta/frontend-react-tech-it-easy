@@ -77,9 +77,6 @@ function App() {
         <TestComponent
           object={testObject}
         />
-        {/*<header>*/}
-        {/*  <h1>Tech it easy dashboard</h1>*/}
-        {/*</header>*/}
         <main>
           <section className="sales-overview">
             <h2>Verkoopoverzicht</h2>
@@ -107,48 +104,14 @@ function App() {
               product={bestSellingProduct}
               checkIcon={checkIcon}
               notIcon={notIcon}
-              featuredImage={featuredImage}
-              nameOfProduct={nameOfProduct}
-              priceOfProduct={priceOfProduct}
-              televisionSizes={televisionSizes}
+              soldOutImage={soldOutImage}
+              image={bestSellingProduct.sourceImg}
+              altImage={featuredImage}
+              productOutOfStock={productOutOfStock(bestSellingProduct)}
+              nameOfProduct={nameOfProduct(bestSellingProduct)}
+              priceOfProduct={priceOfProduct(bestSellingProduct)}
+              televisionSizes={televisionSizes(bestSellingProduct)}
             />
-
-
-            <div className="card">
-              <div className="left-col">
-                <img alt={featuredImage} className="featured-img"
-                     src={bestSellingProduct.sourceImg}></img>
-              </div>
-              <div className="right-col">
-                <h3>{nameOfProduct(bestSellingProduct)}</h3>
-                <strong
-                  className="price">{priceOfProduct(bestSellingProduct)}</strong>
-                <p className="sizes">{televisionSizes(bestSellingProduct)}</p>
-                <p className="card-options">
-                  {/* Here I am just showing an old way of how would approach this*/}
-                  {/* I Kept it in here for example purposes*/}
-                  {bestSellingProduct.options.map((option) => {
-                    if (option.applicable) {
-                      return (
-                        <span className="option-holder" key={option.name}>
-                                <img className="icons"
-                                     src={checkIcon}
-                                     alt="not-icon"/>
-                          {option.name}
-                    </span>)
-                    } else {
-                      return (
-                        <span className="option-holder" key={option.name}>
-                                <img className="icons"
-                                     src={notIcon}
-                                     alt="not-icon"/>
-                          {option.name}
-                    </span>)
-                    }
-                  })}
-                </p>
-              </div>
-            </div>
             <div className="filter-buttons">
               {/* Started to experiment just a bit to see how far I can co with refactoring. I put the btn name and the text thats needed in a single object that contains 4 objects of the 4 buttons*/}
               {/* This way i could iterate over it and even use it in many places*/}
@@ -169,47 +132,18 @@ function App() {
           {/* Here I decided to keep it for example purposes*/}
           {sortedInventory.map((tv) => {
               return (<section key={tv.type} className="telivision-display">
-                <div className="card">
-                  <div className="left-col">
-                    {/* The reason you cant use an if inside an attribute like src or a return value  is that JSC attributes expect a single expression that  evaluates to a value.*/}
-                    {/* The ternary operator is an expression that directly returns a value, makint it suitable for JSC attributes*/}
-                    <img alt={featuredImage} className="featured-img"
-                         src={
-                           productOutOfStock(tv) ?
-                             soldOutImage
-                             :
-                             tv.sourceImg
-                         }>
-                    </img>
-                  </div>
-                  <div className="right-col">
-                    <h3>{nameOfProduct(tv)}</h3>
-                    <strong className="price">{priceOfProduct(tv)}</strong>
-                    <p className="sizes">{televisionSizes(tv)}</p>
-                    <p className="card-options">
-                      {/* When you use parentheses after an arrow function,  it implies an implicit return.*/}
-                      {/* If you want to use the curly brackets you need to add the return before the ternary condition*/}
-                      {tv.options.map((option) => (
-                        option.applicable ? (
-                          <span className="option-holder" key={option.name}>
-                                  <img className="icons"
-                                       src={checkIcon}
-                                       alt="not-icon"/>
-                            {option.name}
-                    </span>
-
-                        ) : (
-                          <span className="option-holder" key={option.name}>
-                                  <img className="icons"
-                                       src={notIcon}
-                                       alt="not-icon"/>
-                            {option.name}
-                    </span>
-                        )
-                      ))}
-                    </p>
-                  </div>
-                </div>
+                <Card
+                  product={tv}
+                  checkIcon={checkIcon}
+                  notIcon={notIcon}
+                  soldOutImage={soldOutImage}
+                  image={tv.sourceImg}
+                  altImage={"television image"}
+                  productOutOfStock={productOutOfStock(tv)}
+                  nameOfProduct={nameOfProduct(tv)}
+                  priceOfProduct={priceOfProduct(tv)}
+                  televisionSizes={televisionSizes(tv)}
+                />
               </section>)
             }
           )
