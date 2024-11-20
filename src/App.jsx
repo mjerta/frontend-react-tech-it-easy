@@ -99,6 +99,7 @@ function App() {
             </div>
           </section>
           <section className="featured-display">
+
             <h2>Best verkochte tv</h2>
             <Card
               product={bestSellingProduct}
