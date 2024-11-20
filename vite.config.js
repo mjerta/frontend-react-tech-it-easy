@@ -9,5 +9,6 @@ export default defineConfig({
     watch: {
       usePolling: true, // Ensures changes are detected, useful in some environments
     },
-  }
+  },
+  base: "./"
 })
