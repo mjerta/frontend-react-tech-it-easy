@@ -1,5 +1,5 @@
 // BEST VERKOPENDE TV
-export const bestSellingTv = {
+export const bestSellingProduct = {
     type: 'UHD 55AU7040',
     name: 'Crystal',
     brand: 'Samsung',
