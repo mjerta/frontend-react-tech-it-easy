@@ -71,7 +71,7 @@ function App() {
     <>
       <div className="wrapper">
         <Header>
-          <h1>Tech it easy dashboard:)</h1>
+          <h1>Tech it easy dashboard</h1>
         </Header
         >
         <TestComponent
